@@ -1,0 +1,83 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Overview of the LLM Prompt Generator Project
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# LLM Prompt Generator
+
+## Project Overview
+This project aims to create a prompt generator specifically designed for LLM. The generator will help create consistent and effective prompts whenever the model is updated or replaced.
+
+## Key Objectives
+- Create a user-friendly interface for prompt generation
+- Support structured input for system prompts and user instructions
+- Ensure consistency in prompt formatting and structure
+- Provide a maintainable and scalable solution
+- Manage prompt versions per model and track project-specific prompt history
+
+## Technical Stack
+- Frontend: Next.js with TypeScript
+- Backend: FastAPI
+- Database: (To be determined based on requirements)
+
+## Core Features
+1. System Prompt Configuration
+   - Role definition
+   - Tone setting
+   - Context management
+
+2. User Instruction Management
+   - General instruction input
+   - Structured output formatting
+   - Template management
+
+3. Prompt Generation
+   - Dynamic prompt assembly
+   - Format validation
+   - Output preview
+
+4. Version Management
+   - Model-specific prompt versioning
+   - Project-based prompt history tracking
+   - Version comparison and rollback capabilities
+   - Hierarchical structure:
+     ```
+     Model
+     ├── Version 1.0
+     │   ├── Project A
+     │   │   ├── Prompt History
+     │   │   └── Usage Statistics
+     │   └── Project B
+     │       ├── Prompt History
+     │       └── Usage Statistics
+     └── Version 2.0
+         ├── Project A
+         │   ├── Prompt History
+         │   └── Usage Statistics
+         └── Project C
+             ├── Prompt History
+             └── Usage Statistics
+     ```
+
+## Project Structure
+```
+prompt_generator/
+├── frontend/          # Next.js application
+├── backend/           # FastAPI server
+├── shared/           # Shared types and utilities
+└── docs/             # Project documentation
+```
+
+## Development Guidelines
+- Follow TypeScript best practices
+- Implement proper error handling
+- Maintain comprehensive documentation
+- Write unit tests for critical components
+- Ensure proper version control and history tracking
+- Implement robust data models for version management
