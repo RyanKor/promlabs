@@ -3,6 +3,30 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --upstage-blue: #0057ff;
+  --upstage-navy: #002366;
+  --upstage-light: #f4f7fb;
+  --upstage-gray: #e5e8ef;
+  --upstage-border: #d1d5db;
+  --upstage-danger: #ff3b30;
+  --upstage-text: #1a1a1a;
+  --upstage-text-secondary: #6b7280;
+  --primary: var(--upstage-blue);
+  --primary-hover: var(--upstage-navy);
+  --primary-light: #e6edff;
+  --secondary: var(--upstage-light);
+  --secondary-hover: var(--upstage-gray);
+  --border: var(--upstage-border);
+  --danger: var(--upstage-danger);
+  --text-primary: var(--upstage-text);
+  --text-secondary: var(--upstage-text-secondary);
+  --success: #34C759;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 @theme inline {
@@ -14,13 +38,115 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #000000;
+    --foreground: #F5F5F7;
+    --primary: #0A84FF;
+    --primary-hover: #007AFF;
+    --primary-light: #0A3B6D;
+    --secondary: #1C1C1E;
+    --secondary-hover: #2C2C2E;
+    --border: #38383A;
+    --text-primary: #F5F5F7;
+    --text-secondary: #86868B;
   }
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Modern button styles */
+.btn {
+  @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
+}
+
+.btn-primary {
+  @apply bg-[var(--primary)] text-white hover:bg-[var(--primary-hover)];
+}
+
+.btn-secondary {
+  @apply bg-[var(--secondary)] text-[var(--text-primary)] hover:bg-[var(--secondary-hover)];
+}
+
+.btn-danger {
+  @apply bg-[var(--danger)] text-white hover:opacity-90;
+}
+
+/* Modern input styles */
+.input {
+  @apply w-full px-4 py-2 rounded-lg border border-[var(--border)] bg-[var(--background)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all duration-200;
+}
+
+/* Card styles */
+.card {
+  @apply bg-[var(--background)] border border-[var(--border)] rounded-lg shadow-sm hover:shadow-md transition-all duration-200;
+}
+
+/* Modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Sidebar hierarchy styles */
+.sidebar-model {
+  background: var(--background);
+  border-left: 4px solid var(--primary);
+  margin-left: 0;
+  padding-left: 0.5rem;
+}
+.sidebar-project {
+  background: var(--secondary);
+  border-left: 3px solid var(--primary-light);
+  margin-left: 1rem;
+  padding-left: 0.75rem;
+  transition: background 0.2s, color 0.2s;
+}
+.sidebar-prompt {
+  background: var(--secondary-hover);
+  border-left: 2px solid var(--primary-light);
+  margin-left: 2rem;
+  padding-left: 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sidebar-project.active,
+.sidebar-prompt.active {
+  background: linear-gradient(90deg, var(--primary) 85%, var(--primary-hover) 100%);
+  color: #fff;
+  border-left: 5px solid var(--primary-hover);
+  font-weight: 800;
+  box-shadow: 0 4px 16px 0 rgba(0,87,255,0.15);
+  transform: scale(1.03);
+  position: relative;
+  z-index: 1;
+}
+.sidebar-project.active::before,
+.sidebar-prompt.active::before {
+  content: '\2713'; /* 체크 아이콘 */
+  position: absolute;
+  left: -1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary-hover);
+  font-size: 1.1em;
+  font-weight: bold;
+  opacity: 0.85;
 }
